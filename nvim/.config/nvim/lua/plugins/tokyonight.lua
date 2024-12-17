@@ -1,6 +1,6 @@
 return {
     "folke/tokyonight.nvim",
-    lazy = false,  -- Không cần thiết khi bạn không dùng Lazy loading cho plugin này
+    lazy = false,
     priority = 1000,
     opts = {},
     config = function()
