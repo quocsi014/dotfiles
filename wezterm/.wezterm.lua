@@ -9,11 +9,11 @@ config.window_decorations = "RESIZE"
 -- image setting
 local user_home = os.getenv("HOME")
 local background_folder = user_home .. "/.config/bg"
-config.window_background_image = background_folder..'/nezukoo.jpg'
+config.window_background_image = background_folder..'/6678293.jpg'
 config.window_background_image_hsb = {
   hue = 1.0,
-  saturation = 0.7,
-  brightness = 0.1,
+  saturation = 3,
+  brightness = 0.15,
 }
 
 config.window_padding = {
