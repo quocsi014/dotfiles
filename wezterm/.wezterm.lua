@@ -12,8 +12,8 @@ local background_folder = user_home .. "/.config/bg"
 config.window_background_image = background_folder..'/6678293.jpg'
 config.window_background_image_hsb = {
   hue = 1.0,
-  saturation = 3,
-  brightness = 0.15,
+  saturation = 4,
+  brightness = 0.2,
 }
 
 config.window_padding = {

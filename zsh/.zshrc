@@ -34,6 +34,9 @@ export PATH="$HOME/.local/bin:$PATH"
 plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
+
+bindkey '^K' up-line-or-history
+
 # Aliases for common commands.
 alias bat="batcat"  # Use batcat for syntax highlighting.
 alias ls="eza --icons --group-directories-first"  # Enhanced ls.
