@@ -10,6 +10,18 @@ return {
 				custom_theme[mode].c.bg = nil -- Làm nền trong suốt
 			end
 		end
+    local os_icon = function()
+			local uname = vim.loop.os_uname().sysname:lower()
+			if uname:find("linux") then
+				return " "
+			elseif uname:find("darwin") then
+				return ""
+			elseif uname:find("windows") then
+				return " "
+			else
+				return " "
+			end
+		end
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -23,7 +35,7 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
-				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_x = { "encoding", os_icon, "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
 			},

@@ -48,7 +48,10 @@ alias ss="source .zshrc"  # Reload .zshrc.
 # FZF configuration.
 alias fv="fzf -e --preview 'batcat --theme=tokyonight --color=always {}' | xargs nvim"  # Open selected file in Neovim.
 alias fp="fzf -e --preview 'batcat --theme=tokyonight --color=always {}'"  # Preview file with batcat.
-
+#docker
+alias dcu="docker compose up"
+alias dcd="docker compose down"
+alias dc="docker compose"
 # Powerlevel10k configuration.
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
