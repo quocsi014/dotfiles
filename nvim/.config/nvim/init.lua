@@ -18,5 +18,6 @@ vim.cmd [[
   augroup END
 ]]
 require("vim-options")
+require("help-floating")
 require("vim-helpers")
 require("lazy").setup("plugins")

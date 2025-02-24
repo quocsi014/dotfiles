@@ -1,0 +1,7 @@
+theme = tokyonight-storm
+font-size = 13
+font-family = "JetBrainsMono NF Medium"
+window-decoration = false
+cursor-style = block
+cursor-style-blink = false
+confirm-close-surface = false

@@ -11,12 +11,13 @@ vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#757575" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#757575" })
 vim.api.nvim_set_option("clipboard", "unnamed")
 vim.cmd("set clipboard=unnamedplus")
-
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 -- move selected lines
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
 -- paste over highlight word
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
