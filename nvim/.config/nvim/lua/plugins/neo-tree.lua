@@ -7,7 +7,8 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		vim.keymap.set("n", "<M-f>", ":Neotree toggle<CR>", {silent = true})
+		vim.keymap.set("n", "<leader>fr", ":Neotree reveal<CR>", { silent = true })
+		vim.keymap.set("n", "<M-f>", ":Neotree toggle<CR>", { silent = true })
 		require("neo-tree").setup({
 			default_component_configs = {
 				container = {
