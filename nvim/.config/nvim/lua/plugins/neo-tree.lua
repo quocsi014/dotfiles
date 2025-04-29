@@ -97,7 +97,16 @@ return {
 					enabled = false,
 				},
 			},
+			-- event_handlers = {
+			-- 	{
+			-- 		event = "file_opened",
+			-- 		handler = function(file_path)
+			-- 			require("neo-tree.command").execute({ action = "close" })
+			-- 		end,
+			-- 	},
+			-- },
 			window = {
+				width = 35,
 				mappings = {
 					["z"] = "close_all_nodes",
 					["Z"] = "expand_all_nodes",

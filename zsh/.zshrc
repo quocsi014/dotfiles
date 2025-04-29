@@ -47,6 +47,7 @@ alias po="init 0"  # Power off the system.
 alias c="clear"  # Clear terminal.
 alias ss="source ~/.zshrc"  # Reload .zshrc.
 alias gb="cd .." #go back
+alias x="exit"
 
 # FZF configuration.
 alias fv="fzf -e --preview 'batcat --theme=tokyonight --color=always {}' | xargs nvim"  # Open selected file in Neovim.
@@ -58,5 +59,17 @@ alias dcd="docker compose down"
 alias dc="docker compose"
 alias lzd="lazydocker"
 # Powerlevel10k configuration.
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+alias cbr="cobra-cli"
+
+alias golint="golangci-lint run -c ~/dev/bzt/.golangci.yml --new"
+
+# pnpm
+export PNPM_HOME="/home/quocsi/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
