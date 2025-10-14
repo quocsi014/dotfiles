@@ -6,20 +6,7 @@ return {
       require("mason").setup({})
     end,
   },
-  -- {
-  -- 	"nvimdev/lspsaga.nvim",
-  -- 	config = function()
-  -- 		require("lspsaga").setup({
-  -- 			ui = {
-  -- 				code_action = ''
-  -- 			},
-  -- 		})
-  -- 	end,
-  -- 	dependencies = {
-  -- 		"nvim-treesitter/nvim-treesitter", -- optional
-  -- 		"nvim-tree/nvim-web-devicons", -- optional
-  -- 	},
-  -- },
+
   {
     "williamboman/mason-lspconfig.nvim",
     lazy = false,
@@ -27,44 +14,42 @@ return {
       auto_install = true,
     },
   },
+
   {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      local lspconfig = require("lspconfig")
-      lspconfig.ts_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pylsp.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.gopls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.pbls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-      })
-      lspconfig.tailwindcss.setup({
+
+      -- helper để setup gọn
+      local function setup(server, opts)
+        vim.lsp.config(server, opts or { capabilities = capabilities })
+      end
+
+      setup("ts_ls", { capabilities = capabilities })
+      setup("pylsp", { capabilities = capabilities })
+      setup("gopls", { capabilities = capabilities })
+      setup("pbls", { capabilities = capabilities })
+      setup("lua_ls", { capabilities = capabilities })
+      setup("zls", { capabilities = capabilities })
+      setup("sqlls", { capabilities = capabilities })
+
+      setup("tailwindcss", {
         capabilities = capabilities,
         filetypes = { "html", "css", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact" },
         settings = {
           tailwindCSS = {
             experimental = {
               classRegex = {
-                { "clsx\\(([^)]*)\\)",       "([^\\s]+)" },
+                { "clsx\\(([^)]*)\\)", "([^\\s]+)" },
                 { "classnames\\(([^)]*)\\)", "([^\\s]+)" },
               },
             },
           },
         },
       })
-      lspconfig.sqlls.setup({
-        capabilities = capabilities,
-      })
+
+      -- keymaps
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
@@ -73,6 +58,36 @@ return {
       vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
       vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
       vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, {})
+    end,
+  },
+
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    lazy = false,
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          -- LSP
+          "gopls",
+          "typescript-language-server",
+          "lua-language-server",
+          "tailwindcss-language-server",
+          "sqls",
+          "buf-language-server",
+
+          -- Formatter
+          "prettier",
+          "stylua",
+          "clang-format",
+
+          -- Linter
+          "eslint_d",
+          "golangci-lint",
+        },
+        auto_update = false,
+        run_on_start = true,
+        start_delay = 3000, -- wait 3s before auto install
+      })
     end,
   },
 }

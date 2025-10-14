@@ -18,7 +18,11 @@ vim.cmd([[
   augroup END
 ]])
 
+vim.env.GOPATH = os.getenv("HOME") .. "/go"
+vim.env.GOMODCACHE = os.getenv("HOME") .. "/go/pkg/mod"
+
 require("vim-options")
 require("help-floating")
 require("vim-helpers")
+require("go-gen-mapping")
 require("lazy").setup("plugins")

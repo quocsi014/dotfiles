@@ -10,13 +10,19 @@ trap 'echo "Process terminated"; kill -INT $$' INT
 export ZSH="$HOME/.oh-my-zsh"
 
 # Add Go binaries and tools to PATH.
-export GOPATH=$HOME/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:/usr/local/go/bin:$GOBIN
-export GOROOT=/usr/local/go
+# export GOPATH="$HOME/go"
+# export GOBIN="$GOPATH/bin"
+# export GOROOT="/snap/go/current"
+# export PATH="$PATH:$GOROOT/bin:$GOBIN"
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+export GOROOT="/snap/go/current"
+export PATH="$PATH:$GOROOT/bin:$GOBIN"
+export GOPRIVATE="gitlab.deepgate.io"
+export GOMODCACHE=$GOPATH/pkg/mod
 
 # Use the "robbyrussell" theme for Oh My Zsh.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Terminal color settings.
 export TERM="xterm-256color"
@@ -37,7 +43,7 @@ plugins=(git zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 
-bindkey '^K' up-line-or-history
+bindkey '^ ' autosuggest-accept
 
 # Aliases for common commands.
 alias bat="batcat"  # Use batcat for syntax highlighting.
@@ -58,13 +64,28 @@ alias dcu="docker compose up"
 alias dcd="docker compose down"
 alias dc="docker compose"
 alias lzd="lazydocker"
+
+#git
+alias gaa="git add ."
+alias ga="git add"
+alias gcm="git commit -m"
+alias gco="git checkout"
+alias gcon="git checkout -b"
+alias gp="git push"
+alias gpf="git push -u origin HEAD"
+alias gpl="git pull"
+
+alias f="fuck"
+
+eval $(thefuck --alias)
 # Powerlevel10k configuration.
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias cbr="cobra-cli"
 
 alias golint="golangci-lint run -c ~/dev/bzt/.golangci.yml --new"
+alias golintall="golangci-lint run -c ~/dev/bzt/.golangci.yml"
 
 # pnpm
 export PNPM_HOME="/home/quocsi/.local/share/pnpm"
@@ -73,3 +94,7 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

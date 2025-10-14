@@ -10,6 +10,10 @@ return {
 				null_ls.builtins.formatting.stylua,
 				null_ls.builtins.formatting.prettier,
 				require("none-ls.diagnostics.eslint_d"),
+        null_ls.builtins.formatting.clang_format.with({
+					command = "/usr/bin/clang-format", -- ← dùng bản apt
+					filetypes = { "c", "cpp", "objc", "proto" }, -- tùy mày
+				}),
 			},
 		})
 		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
