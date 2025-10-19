@@ -48,8 +48,12 @@ return {
           },
         },
       })
-
-      -- keymaps
+      lspconfig.sqlls.setup({
+        capabilities = capabilities,
+      })
+      lspconfig.c3.setup({
+        capabilities = capabilities,
+      })
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
