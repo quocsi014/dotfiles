@@ -15,12 +15,20 @@ export ZSH="$HOME/.oh-my-zsh"
 # export GOBIN="$GOPATH/bin"
 # export GOROOT="/snap/go/current"
 # export PATH="$PATH:$GOROOT/bin:$GOBIN"
+# Go configuration - Auto-detect installation method
+if [ -d "/snap/go/current" ]; then
+    # Company machine - Go from snap
+    export GOROOT="/snap/go/current"
+elif [ -d "/usr/local/go" ]; then
+    # Personal machine - Go from tarball
+    export GOROOT="/usr/local/go"
+fi
+
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
-export GOROOT="/snap/go/current"
 export PATH="$PATH:$GOROOT/bin:$GOBIN"
 export GOPRIVATE="gitlab.deepgate.io"
-export GOMODCACHE=$GOPATH/pkg/mod
+export GOMODCACHE="$GOPATH/pkg/mod"
 
 # Use the "robbyrussell" theme for Oh My Zsh.
 ZSH_THEME="powerlevel10k/powerlevel10k"
