@@ -1,0 +1,4 @@
+#!/bin/bash
+killall -q polybar
+# Launch polybar với config rõ ràng
+polybar --config=$HOME/.config/polybar/config.ini example | tee -a /tmp/polybar.log & disown
