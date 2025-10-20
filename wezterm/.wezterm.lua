@@ -9,12 +9,15 @@ config.window_decorations = "RESIZE"
 -- image setting
 local user_home = os.getenv("HOME")
 local background_folder = user_home .. "/.config/bg"
-local current_background_image = background_folder .. "/6678293.jpg"
+local current_background_image = background_folder .. "/hinata.jpg"
 config.window_background_image = nil
 config.window_background_image_hsb = {
+	-- hue = 1.0,
+	-- saturation = 4,
+	-- brightness = 0.2,
 	hue = 1.0,
-	saturation = 4,
-	brightness = 0.2,
+	saturation = 1,
+	brightness = 0.08,
 }
 
 config.window_padding = {
