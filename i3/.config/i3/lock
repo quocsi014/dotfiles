@@ -1,7 +1,10 @@
 #!/bin/bash
 tmp="/tmp/lockscreen.png"
 
+# Ungrab input trước
+sleep 0.1
+
 scrot $tmp
-convert $tmp -blur 0x6 $tmp
+convert $tmp -blur 0x5 $tmp
 i3lock -i $tmp
 rm $tmp

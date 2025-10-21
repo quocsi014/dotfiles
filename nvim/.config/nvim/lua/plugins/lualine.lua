@@ -57,7 +57,7 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local custom_theme = require("lualine.themes.tokyonight")
-		
+
 		-- Làm background trong suốt và text sáng hơn
 		for _, mode in pairs({ "normal", "insert", "visual", "replace", "command", "inactive" }) do
 			if custom_theme[mode] then
@@ -76,20 +76,20 @@ return {
 				end
 			end
 		end
-		
+
 		local os_icon = function()
 			local uname = vim.loop.os_uname().sysname:lower()
-      if uname:find("linux") then
-        return " "
-      elseif uname:find("darwin") then
-        return ""
-      elseif uname:find("windows") then
-        return " "
-      else
-        return " "
+			if uname:find("linux") then
+				return " "
+			elseif uname:find("darwin") then
+				return ""
+			elseif uname:find("windows") then
+				return " "
+			else
+				return " "
 			end
 		end
-		
+
 		require("lualine").setup({
 			options = {
 				icons_enabled = true,
@@ -103,10 +103,10 @@ return {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
-				lualine_x = { 
-					"encoding", 
-					{ os_icon, color = { fg = "#7aa2f7" } },  -- ← Thêm màu cho icon
-					"filetype" 
+				lualine_x = {
+					"encoding",
+					{ os_icon, color = { fg = "#7aa2f7" } }, -- ← Thêm màu cho icon
+					"filetype",
 				},
 				lualine_y = { "progress" },
 				lualine_z = { "location" },

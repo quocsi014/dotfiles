@@ -1,0 +1,4 @@
+--ignore='.git'
+--ignore='README.md'
+--ignore='.luarc.json'
+--ignore='.stowrc'

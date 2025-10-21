@@ -8,6 +8,7 @@ return {
     local action_state = require("telescope.actions.state")
     telescope.setup({
       defaults = {
+        path_display = { "filename" },
         mappings = {
           i = {
             ["<C-space>"] = actions.toggle_selection + actions.move_selection_worse, -- Thêm file vào danh sách chọn
@@ -50,6 +51,25 @@ return {
       })
     end, { noremap = true, silent = true })
 
-    vim.keymap.set("n", "<leader>fb", builtin.buffers, { noremap = true, silent = true })
+    vim.keymap.set("n", "<leader>fb", function()
+      builtin.buffers({
+        path_display = function(_, path)
+          local filename = vim.fn.fnamemodify(path, ":t")
+          local full_path = vim.fn.fnamemodify(path, ":~:.")
+          local parts = vim.split(full_path, "/", { trimempty = true })
+
+          local start_idx = math.max(#parts - 3, 1)
+          local short_path = table.concat(vim.list_slice(parts, start_idx, #parts - 1), "/")
+
+          if short_path ~= "" then
+            return string.format("%s — %s/", filename, short_path)
+          else
+            return filename
+          end
+        end,
+        sort_lastused = true,
+        ignore_current_buffer = true,
+      })
+    end, { noremap = true, silent = true })
   end,
 }

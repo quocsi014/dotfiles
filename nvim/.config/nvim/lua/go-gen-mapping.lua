@@ -66,6 +66,7 @@ local function generate_plural_mapper()
 		string.format("\tfor _, %s := range %s {", param_name, plural_param_name),
 		string.format("\t\touts = append(outs, %s(%s))", func_name, param_name),
 		"\t}",
+		"",
 		"\treturn outs",
 		"}",
 	}
@@ -83,4 +84,23 @@ vim.keymap.set("n", "<leader>gm", generate_plural_mapper, {
 	desc = "Generate plural mapper function",
 	noremap = true,
 	silent = true,
+})
+
+vim.keymap.set("n", "<space>gat", function()
+	local tag = vim.fn.input("tag: ")
+	if tag ~= "" then
+		vim.cmd("GoAddTag " .. tag)
+	else
+		print("No tag entered, bro!")
+	end
+end, {
+	silent = true,
+	noremap = true,
+	desc = "Add struct tag (ask for type)",
+})
+
+vim.keymap.set("n", "<space>gft", ":GoFillStruct<CR>", {
+	silent = true,
+	noremap = true,
+	desc = "Fill struct fields",
 })
