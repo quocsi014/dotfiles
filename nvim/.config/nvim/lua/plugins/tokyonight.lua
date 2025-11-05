@@ -8,17 +8,18 @@
 -- }
 
 return {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    opts = {},
-    config = function()
-        require("tokyonight").setup({
-            transparent = true,           -- Enable transparent background
-            styles = {
-                sidebars = "transparent", -- Sidebar trong suốt
-                floats = "transparent",   -- Float window trong suốt
-            },
-        })
-        vim.cmd("colorscheme tokyonight-storm")
-    end
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
+	opts = {},
+	config = function()
+		require("tokyonight").setup({
+			transparent = true, -- Enable transparent background
+			styles = {
+				sidebars = "transparent", -- Sidebar trong suốt
+				floats = "transparent", -- Float window trong suốt
+			},
+		})
+		vim.cmd("colorscheme tokyonight-storm")
+	end,
 }

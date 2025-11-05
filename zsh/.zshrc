@@ -54,6 +54,11 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey '^ ' autosuggest-accept
 
+#vim style
+bindkey -v
+bindkey -M viins 'jk' vi-cmd-mode
+export KEYTIMEOUT=1
+
 # Aliases for common commands.
 alias bat="batcat"  # Use batcat for syntax highlighting.
 alias ls="eza --icons --group-directories-first"  # Enhanced ls.

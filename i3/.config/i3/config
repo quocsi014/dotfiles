@@ -26,9 +26,10 @@ exec --no-startup-id dbus-launch --exit-with-session i3
 exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id export GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS=@im=ibus
 exec --no-startup-id ~/touchpad
-
 # === IBus setup ===
 exec --no-startup-id bash -c 'export GTK_IM_MODULE=ibus; export QT_IM_MODULE=ibus; export XMODIFIERS=@im=ibus; ibus-daemon -drx'
+
+exec --no-startup-id feh --bg-scale /home/quocsi/.config/bg/hinata.jpg
 
 #brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
@@ -149,6 +150,12 @@ bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
+
+#auto move windows to its workspace
+assign [class="org.wezfurlong.wezterm"] 1
+assign [class="Brave-browser"] 2
+assign [class="MongoDB Compass"] 3
+assign [class="bruno"] 4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -2,7 +2,7 @@
 tmp="/tmp/lockscreen.png"
 
 # Ungrab input trước
-sleep 0.1
+sleep 1
 
 scrot $tmp
 convert $tmp -blur 0x5 $tmp

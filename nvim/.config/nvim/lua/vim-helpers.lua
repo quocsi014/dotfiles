@@ -11,3 +11,11 @@ end, { noremap = true, silent = true })
 -- go to errors in a file :/
 vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next) -- next err
 vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev) -- previous err
+
+local old_notify = vim.notify
+vim.notify = function(msg, level, opts)
+  if type(msg) == "string" and msg:match("require%('lspconfig'%)") then
+    return
+  end
+  old_notify(msg, level, opts)
+end
