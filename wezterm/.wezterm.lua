@@ -28,9 +28,7 @@ config.window_padding = {
 	top = 0,
 }
 config.font_size = 14
-config.font = wezterm.font("JetBrains Mono", {
-	weight = "Medium",
-})
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
 config.color_scheme = "Tokyo Night Storm"
 local mux = wezterm.mux
 wezterm.on("gui-startup", function(cmd)
