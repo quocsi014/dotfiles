@@ -66,7 +66,6 @@ alias ll="eza --icons --group-directories-first -al"  # Detailed ls.
 alias po="init 0"  # Power off the system.
 alias c="clear"  # Clear terminal.
 alias ss="source ~/.zshrc"  # Reload .zshrc.
-alias gb="cd .." #go back
 alias x="exit"
 
 # FZF configuration.
@@ -84,23 +83,42 @@ alias gaa="git add ."
 alias ga="git add"
 alias gcm="git commit -m"
 alias gco="git checkout"
+alias gcom="git checkout main"
 alias gcon="git checkout -b"
 alias gp="git push"
-alias gpf="git push -u origin HEAD"
+alias gph="git push -u origin HEAD"
+alias gpf="git push -f"
 alias gpl="git pull"
+alias gst="git status"
+alias gplm="git pull origin main"
+alias gplo="git pull origin"
+alias gm="git merge"
+alias gmm="git merge origin/main"
+alias gbd="git branch -D"
+alias gbm="git branch -m"
+alias gb="git branch"
+alias gl="git log"
+alias grl="git reflog"
+alias gcp="git cherry-pick"
 
 alias f="fuck"
 
 eval $(thefuck --alias)
 #zayi
-alias fm="zayi"
+alias fm="yazi"
 
+alias web="brave-browser"
 # Powerlevel10k configuration.
 # source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 alias cbr="cobra-cli"
 
+#golang
+alias gomt="go mod tidy"
+alias goi="go install"
+alias gor="go run ."
+alias gob="go build ."
 alias golint="golangci-lint run -c ~/dev/bzt/.golangci.yml --new"
 alias golintall="golangci-lint run -c ~/dev/bzt/.golangci.yml"
 
@@ -121,3 +139,5 @@ eval "$(thefuck --alias)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+[[ -s "/home/quocsi/.gvm/scripts/gvm" ]] && source "/home/quocsi/.gvm/scripts/gvm"

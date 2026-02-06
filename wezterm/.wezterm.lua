@@ -5,7 +5,7 @@ local config = wezterm.config_builder()
 
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 0.8
+config.window_background_opacity = 1
 
 -- image setting
 local user_home = os.getenv("HOME")

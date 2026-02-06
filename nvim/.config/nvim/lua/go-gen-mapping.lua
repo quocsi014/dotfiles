@@ -88,15 +88,23 @@ vim.keymap.set("n", "<leader>gm", generate_plural_mapper, {
 
 vim.keymap.set("n", "<space>gat", function()
 	local tag = vim.fn.input("tag: ")
-	if tag ~= "" then
-		vim.cmd("GoAddTag " .. tag)
-	else
+	if tag == "" then
 		print("No tag entered, bro!")
+		return
 	end
+
+	local omit = vim.fn.input("omitempty? (y/N): ")
+	local cmd = "GoAddTag " .. tag
+
+	if omit:lower() == "y" then
+		cmd = cmd .. " -add-options " .. tag .. "=omitempty"
+	end
+
+	vim.cmd(cmd)
 end, {
 	silent = true,
 	noremap = true,
-	desc = "Add struct tag (ask for type)",
+	desc = "Add struct tag with optional omitempty",
 })
 
 vim.keymap.set("n", "<space>gft", ":GoFillStruct<CR>", {
