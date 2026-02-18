@@ -28,6 +28,7 @@ exec --no-startup-id export GTK_IM_MODULE=ibus QT_IM_MODULE=ibus XMODIFIERS=@im=
 exec --no-startup-id ~/touchpad
 # === IBus setup ===
 exec --no-startup-id bash -c 'export GTK_IM_MODULE=ibus; export QT_IM_MODULE=ibus; export XMODIFIERS=@im=ibus; ibus-daemon -drx'
+exec --no-startup-id systemctl restart NetworkManager
 
 exec --no-startup-id feh --bg-scale /home/quocsi/.config/bg/hinata.jpg
 
