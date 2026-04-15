@@ -29,6 +29,7 @@ export GOBIN="$GOPATH/bin"
 export PATH="$PATH:$GOROOT/bin:$GOBIN"
 export GOPRIVATE="gitlab.deepgate.io"
 export GOMODCACHE="$GOPATH/pkg/mod"
+export GOEXPERIMENT=aliastypeparams
 
 # Use the "robbyrussell" theme for Oh My Zsh.
 ZSH_THEME="powerlevel10k/powerlevel10k"
@@ -94,12 +95,15 @@ alias gplm="git pull origin main"
 alias gplo="git pull origin"
 alias gm="git merge"
 alias gmm="git merge origin/main"
+alias gmc="git merge --continue"
 alias gbd="git branch -D"
 alias gbm="git branch -m"
 alias gb="git branch"
 alias gl="git log"
 alias grl="git reflog"
 alias gcp="git cherry-pick"
+alias grbm="git rebase origin/main"
+alias grbc="git rebase --continue"
 
 alias f="fuck"
 
@@ -121,6 +125,13 @@ alias gor="go run ."
 alias gob="go build ."
 alias golint="golangci-lint run -c ~/dev/bzt/.golangci.yml --new"
 alias golintall="golangci-lint run -c ~/dev/bzt/.golangci.yml"
+
+#xrandx
+alias xra="xrandr --output HDMI-1 --above eDP-1"
+alias xrr="xrandr --output HDMI-1 --right eDP-1"
+
+#corevision dir
+alias cv="cd ~/dev/cv/cv"
 
 # pnpm
 export PNPM_HOME="/home/quocsi/.local/share/pnpm"

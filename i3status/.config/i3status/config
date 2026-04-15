@@ -1,0 +1,45 @@
+general {
+    interval = 2
+}
+
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "wireless _first_"
+order += "battery BAT0"
+order += "volume master"
+order += "tztime local"
+
+cpu_usage {
+    format = "CPU %usage"
+}
+
+memory {
+    format = "RAM %used"
+    threshold_degraded = "1G"
+    format_degraded = "RAM %used"
+}
+
+wireless _first_ {
+    format_up = "WIFI %essid %quality"
+    format_down = "WIFI down"
+}
+
+battery BAT0 {
+    format = "BAT %percentage %status"
+    status_chr = "CHG"
+    status_bat = "BAT"
+    status_full = "FULL"
+    status_unk = "UNK"
+    low_threshold = 15
+}
+
+volume master {
+    format = "VOL %volume"
+    format_muted = "MUTE"
+    device = "pulse"
+}
+
+tztime local {
+    format = "%Y-%m-%d %H:%M"
+}

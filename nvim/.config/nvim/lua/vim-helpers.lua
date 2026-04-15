@@ -12,10 +12,19 @@ end, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>ne", vim.diagnostic.goto_next) -- next err
 vim.keymap.set("n", "<leader>pe", vim.diagnostic.goto_prev) -- previous err
 
+-- notify config
+local ignore_patterns = {
+  "gopls:",
+  "InlayHint",
+}
 local old_notify = vim.notify
 vim.notify = function(msg, level, opts)
-  if type(msg) == "string" and msg:match("require%('lspconfig'%)") then
-    return
+  if type(msg) == "string" then
+    for _, pattern in ipairs(ignore_patterns) do
+      if msg:match(pattern) then
+        return
+      end
+    end
   end
   old_notify(msg, level, opts)
 end
