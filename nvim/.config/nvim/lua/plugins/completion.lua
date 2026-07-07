@@ -1,17 +1,37 @@
+--- nvim-cmp + LuaSnip
+--- https://github.com/hrsh7th/nvim-cmp
+--- https://github.com/hrsh7th/cmp-nvim-lsp (default_capabilities → vim.lsp.config)
+--- Giữ mapping; pin = true: Lazy không tự cập nhật plugin.
+
 return {
 	{
 		"hrsh7th/cmp-nvim-lsp",
+		pin = true,
 	},
+
 	{
 		"L3MON4D3/LuaSnip",
+		pin = true,
 		dependencies = {
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
+			{ "saadparwaiz1/cmp_luasnip", pin = true },
+			{ "rafamadriz/friendly-snippets", pin = true },
 		},
 	},
+
+	{
+		"hrsh7th/cmp-buffer",
+		pin = true,
+	},
+
 	{
 		"hrsh7th/nvim-cmp",
-		version = "v0.0.2",
+		pin = true,
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+		},
 		config = function()
 			local cmp = require("cmp")
 			require("luasnip.loaders.from_vscode").lazy_load()
@@ -28,8 +48,6 @@ return {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					-- ["<Tab>"] = cmp.mapping.select_next_item(),  -- Move to next suggestion
-					-- ["<S-Tab>"] = cmp.mapping.select_prev_item(), -- Move to previous suggestion
 					["<Tab>"] = cmp.mapping(function(fallback)
 						local luasnip = require("luasnip")
 						if cmp.visible() then
@@ -40,7 +58,6 @@ return {
 							fallback()
 						end
 					end, { "i", "s" }),
-
 					["<S-Tab>"] = cmp.mapping(function(fallback)
 						local luasnip = require("luasnip")
 						if cmp.visible() then
@@ -54,7 +71,7 @@ return {
 				}),
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
-					{ name = "luasnip" }, -- For luasnip users.
+					{ name = "luasnip" },
 				}, {
 					{ name = "buffer" },
 				}),

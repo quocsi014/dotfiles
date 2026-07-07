@@ -6,7 +6,10 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   config = function()
-    require("go").setup()
+    require("go").setup({
+      -- Let nvim-lspconfig own gopls setup to avoid duplicate clients.
+      lsp_cfg = false,
+    })
   end,
   event = {"CmdlineEnter"},
   ft = {"go", 'gomod'},

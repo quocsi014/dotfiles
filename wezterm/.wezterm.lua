@@ -30,10 +30,11 @@ config.window_padding = {
 config.font_size = 14
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
 config.color_scheme = "Night Owl (Gogh)"
+-- config.color_scheme = "Ef-Deuteranopia-Dark"
 local mux = wezterm.mux
 wezterm.on("gui-startup", function(cmd)
 	local tab, pane, window = mux.spawn_window(cmd or {})
-  window:gui_window():maximize()
+	window:gui_window():maximize()
 end)
 --key map
 config.keys = {

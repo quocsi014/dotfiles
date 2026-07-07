@@ -4,7 +4,7 @@ return {
     dependencies = {
       "rcarriga/nvim-dap-ui",
       "nvim-neotest/nvim-nio",
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "jay-babu/mason-nvim-dap.nvim",
     },
     ft = { "go" }, -- chỉ load khi mở file go cho đỡ tốn RAM

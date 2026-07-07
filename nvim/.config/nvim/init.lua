@@ -21,6 +21,8 @@ vim.cmd([[
 vim.env.GOPATH = os.getenv("HOME") .. "/go"
 vim.env.GOMODCACHE = os.getenv("HOME") .. "/go/pkg/mod"
 
+vim.g.markdown_fenced_languages = { "go", "typescript", "lua", "bash=sh" }
+
 require("vim-options")
 require("help-floating")
 require("vim-helpers")

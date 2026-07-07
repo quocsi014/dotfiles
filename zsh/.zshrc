@@ -66,7 +66,7 @@ alias ls="eza --icons --group-directories-first"  # Enhanced ls.
 alias ll="eza --icons --group-directories-first -al"  # Detailed ls.
 alias po="init 0"  # Power off the system.
 alias c="clear"  # Clear terminal.
-alias ss="source ~/.zshrc"  # Reload .zshrc.
+alias sz="source ~/.zshrc"  # Reload .zshrc.
 alias x="exit"
 
 # FZF configuration.
@@ -123,8 +123,8 @@ alias gomt="go mod tidy"
 alias goi="go install"
 alias gor="go run ."
 alias gob="go build ."
-alias golint="golangci-lint run -c ~/dev/bzt/.golangci.yml --new"
-alias golintall="golangci-lint run -c ~/dev/bzt/.golangci.yml"
+alias golint="golangci-lint run -c ~/dev/cv/cv/.golangci.yml ./..."
+alias golintfix="golangci-lint run -c ~/dev/cv/cv/.golangci.yml --fix ./..."
 
 #xrandx
 alias xra="xrandr --output HDMI-1 --above eDP-1"
@@ -150,5 +150,4 @@ eval "$(thefuck --alias)"
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-[[ -s "/home/quocsi/.gvm/scripts/gvm" ]] && source "/home/quocsi/.gvm/scripts/gvm"
+export PATH="/opt/nvim/bin:$PATH"

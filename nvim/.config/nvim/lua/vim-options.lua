@@ -1,3 +1,4 @@
+vim.opt.autoread = true
 vim.opt.expandtab = false
 vim.cmd("set tabstop=2")
 vim.cmd("set softtabstop=2")
@@ -9,6 +10,9 @@ vim.cmd("set cursorline")
 vim.api.nvim_set_hl(0, "LineNr", { fg = "#757575" })
 vim.api.nvim_set_hl(0, "LineNrAbove", { fg = "#757575" })
 vim.api.nvim_set_hl(0, "LineNrBelow", { fg = "#757575" })
+vim.api.nvim_set_hl(0, "@markup.raw.block.markdown", { link = "None" })
+vim.api.nvim_set_hl(0, "@markup.raw.inline.markdown", { link = "None" })
+vim.api.nvim_set_hl(0, "@text.literal.markdown", { link = "None" })
 vim.api.nvim_set_option("clipboard", "unnamed")
 vim.cmd("set clipboard=unnamedplus")
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
@@ -21,4 +25,6 @@ vim.keymap.set("i", "jk", "<Esc>", { noremap = true, silent = true })
 -- paste over highlight word
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.opt.colorcolumn = "94"
-vim.keymap.set("x", "p", '"_dP')
+vim.schedule(function()
+  vim.opt.laststatus = 0
+end)vim.keymap.set("x", "p", '"_dP')

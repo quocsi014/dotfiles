@@ -28,3 +28,11 @@ vim.notify = function(msg, level, opts)
   end
   old_notify(msg, level, opts)
 end
+
+vim.keymap.set("n", "<leader>s", function()
+  vim.opt.laststatus = 3
+
+  vim.defer_fn(function()
+    vim.opt.laststatus = 0
+  end, 2500)
+end)
